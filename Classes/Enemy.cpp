@@ -20,6 +20,6 @@ void Enemy::run()
     auto frameCache = SpriteFrameCache::getInstance();
     frameCache->addSpriteFramesWithFile("hero_magi.plist", "hero_magi.png");
     
-    auto animate = Animate::create(AnimationUtil::createAnimWithFrame("run", 0.5f, -1));
+    Animate* animate = Animate::create(AnimationUtil::createAnimWithFrame("run", 0.5f, -1));
     m_Sprite->runAction(animate);
 }

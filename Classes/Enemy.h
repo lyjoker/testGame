@@ -20,6 +20,10 @@ public:
     CREATE_FUNC(Enemy);
     virtual bool init();
     void run();
+    void attack();
+    void initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack);
+protected:
+    char* name;
 };
 
 #endif /* defined(__TestGame__Enemy__) */

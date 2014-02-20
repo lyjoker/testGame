@@ -15,6 +15,13 @@ bool Enemy::init()
 {
     return true;
 }
+void Enemy::initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack)
+{
+    name = strcpy(name, pName);
+    m_curHP = m_maxHP = pHP;
+    m_speed = pSpeed;
+    m_attack = pAttack;
+}
 void Enemy::run()
 {
     auto frameCache = SpriteFrameCache::getInstance();

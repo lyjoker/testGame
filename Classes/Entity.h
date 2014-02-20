@@ -17,5 +17,6 @@ public:
     void bindSprite(cocos2d::Sprite* sprite);
 protected:
     cocos2d::Sprite* m_Sprite;
+    int m_curHP, m_maxHP, m_attack, m_speed;
 };
 #endif /* defined(__TestGame__Entity__) */

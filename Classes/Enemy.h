@@ -19,11 +19,9 @@ class Enemy : public Entity
 public:
     CREATE_FUNC(Enemy);
     virtual bool init();
-    void run();
-    void attack();
-    void initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack);
+    //Enemy* create(const char* pName, int pHP, int pSpeed, int pAttack);
+    void initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack, cocos2d::Point);
 protected:
-    char* name;
 };
 
 #endif /* defined(__TestGame__Enemy__) */

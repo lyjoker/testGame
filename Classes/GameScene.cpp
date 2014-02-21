@@ -28,11 +28,9 @@ bool GameScene::init()
     do{
         initBG();
         auto testEnemy = Enemy::create();
-        Sprite* testSprite = Sprite::create();
-        testEnemy->bindSprite(testSprite);
-        testEnemy->setPosition(200, 200);
+        testEnemy->initWithProperty("Enemy_Knight", 1000, 3, 50, Point(200,200));
         testEnemy->run();
-        this->addChild(testEnemy);
+        this->addChild(testEnemy, 1);
         bRet = true;
     }while (0);
     return bRet;

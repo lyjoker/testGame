@@ -13,7 +13,7 @@
 
 class AnimationUtil{
 public:
-    static cocos2d::Animation* createAnimWithFrame(const char* name, float delay, int iLoops);
+    static cocos2d::Animation* createAnimWithFrame(std::string name, float delay, int iLoops);
     
 };
 

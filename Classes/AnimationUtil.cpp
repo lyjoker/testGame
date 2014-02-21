@@ -9,14 +9,14 @@
 #include "AnimationUtil.h"
 USING_NS_CC;
 
-Animation* AnimationUtil::createAnimWithFrame(const char* name, float delay, int iLoops)
+Animation* AnimationUtil::createAnimWithFrame(std::string name, float delay, int iLoops)
 {
     auto cache = SpriteFrameCache::getInstance();
     Vector<SpriteFrame*> framesArray = Vector<SpriteFrame*>();
     SpriteFrame* frame = NULL;
     int index = 1;
     do {
-        const char* tmp = String::createWithFormat("%s%d.png", name, index++)->getCString();
+        std::string tmp = StringUtils::format("%s%d.png", name.c_str(), index++);
         frame = cache->getSpriteFrameByName(tmp);
         if (frame == NULL)
             break;

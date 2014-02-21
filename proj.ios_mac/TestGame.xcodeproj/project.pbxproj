@@ -62,6 +62,10 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		913CFB3B18B58C4C00971134 /* hero_magi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 913CFB3918B58C4C00971134 /* hero_magi.plist */; };
+		913CFB3C18B58C4C00971134 /* hero_magi.png in Resources */ = {isa = PBXBuildFile; fileRef = 913CFB3A18B58C4C00971134 /* hero_magi.png */; };
+		913CFB4518B71C4100971134 /* Enemy_Knight.plist in Resources */ = {isa = PBXBuildFile; fileRef = 913CFB4318B71C4100971134 /* Enemy_Knight.plist */; };
+		913CFB4618B71C4100971134 /* Enemy_Knight.png in Resources */ = {isa = PBXBuildFile; fileRef = 913CFB4418B71C4100971134 /* Enemy_Knight.png */; };
 		9185AFAC18B4974700352825 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9185AFAA18B4974700352825 /* Enemy.cpp */; };
 		91C1C7AF18B4A8FE00BEDA0F /* AnimationUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C1C7AD18B4A8FE00BEDA0F /* AnimationUtil.cpp */; };
 		91C1C7B818B4B04A00BEDA0F /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C1C7B618B4B04A00BEDA0F /* Entity.cpp */; };
@@ -294,6 +298,10 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
+		913CFB3918B58C4C00971134 /* hero_magi.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hero_magi.plist; sourceTree = "<group>"; };
+		913CFB3A18B58C4C00971134 /* hero_magi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hero_magi.png; sourceTree = "<group>"; };
+		913CFB4318B71C4100971134 /* Enemy_Knight.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Enemy_Knight.plist; sourceTree = "<group>"; };
+		913CFB4418B71C4100971134 /* Enemy_Knight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Enemy_Knight.png; sourceTree = "<group>"; };
 		9185AFAA18B4974700352825 /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = ../Classes/Enemy.cpp; sourceTree = "<group>"; };
 		9185AFAB18B4974700352825 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = ../Classes/Enemy.h; sourceTree = "<group>"; };
 		91C1C7AD18B4A8FE00BEDA0F /* AnimationUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AnimationUtil.cpp; path = ../Classes/AnimationUtil.cpp; sourceTree = "<group>"; };
@@ -516,6 +524,10 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				913CFB4318B71C4100971134 /* Enemy_Knight.plist */,
+				913CFB4418B71C4100971134 /* Enemy_Knight.png */,
+				913CFB3918B58C4C00971134 /* hero_magi.plist */,
+				913CFB3A18B58C4C00971134 /* hero_magi.png */,
 				91D5C68318B3303300A950CF /* background.png */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
@@ -720,17 +732,21 @@
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				91D5C68418B3303300A950CF /* background.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				913CFB4518B71C4100971134 /* Enemy_Knight.plist in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				913CFB3B18B58C4C00971134 /* hero_magi.plist in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				913CFB4618B71C4100971134 /* Enemy_Knight.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
+				913CFB3C18B58C4C00971134 /* hero_magi.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,

@@ -17,21 +17,21 @@ bool Enemy::init()
 
     return true;
 }
-void Enemy::initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack, Point point)
+void Enemy::initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack, GameMap* point)
 {
     name = pName;
     m_curHP = m_maxHP = pHP;
     m_speed = pSpeed;
     m_attack = pAttack;
+    m_position = point;
     auto frameCache = SpriteFrameCache::getInstance();
     frameCache->addSpriteFramesWithFile(StringUtils::format("%s.plist", name.c_str()), StringUtils::format("%s.png", name.c_str()));
     Sprite* testSprite = Sprite::createWithSpriteFrame(frameCache->getSpriteFrameByName(StringUtils::format("%s_run1.png", name.c_str())));
     this->bindSprite(testSprite);
-    m_Sprite->setPosition(point);
+    m_Sprite->setPosition(point->getPosition());
     m_status = STATUS_RUNNING;
     /*
     auto enemyListener = EventListenerTouchOneByOne::create();
-    //enemyListener->setSwallowTouches(true);
     enemyListener->onTouchBegan = [=](Touch* touch, Event* event)->bool{
         
         Point tmp = this->convertToNodeSpace(touch->getLocation());

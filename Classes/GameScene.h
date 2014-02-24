@@ -13,24 +13,31 @@
 #include "GameMap.h"
 #include "Common.h"
 #include "Enemy.h"
+#include "MenuLayer.h"
 
 class GameScene : public cocos2d::Layer
 {
 public:
     static cocos2d::Scene* createScene();
+    static MenuLayer* menulayer;
+    static cocos2d::Vector<Enemy*> *enemyList;
     bool init();
+    void setTimeDisplay(cocos2d::LabelTTF *);
     CREATE_FUNC(GameScene);
     
 private:
     void initBG();
     cocos2d::Sprite* m_bgSprite;
-    float scaleNow;
+    void update(float dt);
+    float scaleNow, nowTime;
     bool onTouchBGBegan(cocos2d::Touch*, cocos2d::Event*);
     void onTouchBGMoved(cocos2d::Touch*, cocos2d::Event*);
     void onTouchBGEnded(cocos2d::Touch*, cocos2d::Event*);
     cocos2d::Point nowTouchPoint;
     void updateEdges();
     float maxWidth, minWidth, maxHeight, minHeight;
+
+
 };
 
 

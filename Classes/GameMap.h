@@ -10,23 +10,17 @@
 #define __TestGame__GameMap__
 
 #include "cocos2d.h"
-#include "cocos-ext.h"
+#include "Common.h"
 
-class GameMap : public cocos2d::Sprite
+class GameMap
 {
 public:
-    GameMap();
-    bool init();
-    int getWalkableRight();
-    int getWalkableLeft();
-    int getWalkableTop();
-    int getWalkableBottom();
-    GameMap* create(const char*);
-private:
-    const int mWalkableMapMinX;
-    const int mWalkableMapMaxX;
-    const int mWalkableMapMinY;
-    const int mWalkableMapMaxY;
+    static cocos2d::Point MapPoint(int line, float position, float nowScale);
+    GameMap(int v_line, float v_x, float v_scale);
+    int line;
+    float x, scale;
+    cocos2d::Point getPosition();
+
 };
 
 #endif /* defined(__TestGame__GameMap__) */

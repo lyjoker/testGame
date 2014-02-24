@@ -14,11 +14,16 @@ USING_NS_CC;
 float MAP_POS_X = WIN_WIDTH / 2;
 float MAP_POS_Y = WIN_HEIGHT / 2;
 
+MenuLayer* GameScene::menulayer = NULL;
+Vector<Enemy*> *GameScene::enemyList = new Vector<Enemy*>;
+
 Scene* GameScene::createScene()
 {
     auto scene = Scene::create();
     auto layer = GameScene::create();
+    menulayer = MenuLayer::create();
     scene->addChild(layer);
+    scene->addChild(menulayer);
     return scene;
     
 }
@@ -27,11 +32,14 @@ bool GameScene::init()
     bool bRet = false;
     do{
         initBG();
+        nowTime = 0;
         auto testEnemy = Enemy::create();
-        testEnemy->initWithProperty("Enemy_Knight", 1000, 3, 50, Point(200,200));
+        testEnemy->initWithProperty("Enemy_Knight", 1000, 3, 50, new GameMap(1, RIGHT_EDGE_X, scaleNow));
         testEnemy->run();
         this->addChild(testEnemy, 1);
+        enemyList->pushBack(testEnemy);
         bRet = true;
+        this->scheduleUpdate();
     }while (0);
     return bRet;
 }
@@ -86,4 +94,11 @@ void GameScene::updateEdges()
     minWidth = WIN_WIDTH - scaleNow * BG_WIDTH;
     maxHeight = 0;
     minHeight = WIN_HEIGHT - scaleNow * BG_HEIGHT;
+}
+void GameScene::update(float dt)
+{
+    nowTime+=dt;
+    if (menulayer!=NULL)
+        menulayer->timeDisplayer->setString(StringUtils::format("%.2f", nowTime));
+    
 }

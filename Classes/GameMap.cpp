@@ -7,48 +7,30 @@
 //
 
 #include "GameMap.h"
-#include "Common.h"
+
 
 USING_NS_CC;
-USING_NS_CC_EXT;
+
 
 const float FLOOR_POS_Y = 110;
 const float CELL_POS_Y = 220;
-const float LEFT_EDGE_X = -BG_WIDTH / 2 + WIN_WIDTH / 2;
-const float RIGHT_EDGE_X = BG_WIDTH / 2 + WIN_WIDTH / 2;
 
-GameMap::GameMap()
-    : mWalkableMapMaxX(RIGHT_EDGE_X), mWalkableMapMinX(LEFT_EDGE_X),
-    mWalkableMapMaxY(CELL_POS_Y), mWalkableMapMinY(FLOOR_POS_Y)
-{
-    //sSprite::create("background.png");
-    init();
-}
-bool GameMap::init()
-{
-    return true;
-}
-GameMap* GameMap::create(const char* tmp)
-{
-    Sprite::create(tmp);
-    return this;
-}
-int GameMap::getWalkableRight()
-{
-	return mWalkableMapMaxX;
-}
 
-int GameMap::getWalkableTop()
+GameMap::GameMap(int v_line, float v_x, float v_scale)
 {
-	return mWalkableMapMaxY;
+    line = v_line;
+    x = v_x;
+    scale = v_scale;
 }
-
-int GameMap::getWalkableLeft()
+Point GameMap::MapPoint(int line, float position, float nowScale)
 {
-	return mWalkableMapMinX;
+    if (line == 1)
+        return Point(LINE1, position*nowScale);
+    if (line == 2)
+        return Point(LINE2, position*nowScale);
+    return Point(LINE1, position*nowScale);
 }
-
-int GameMap::getWalkableBottom()
+Point GameMap::getPosition()
 {
-	return mWalkableMapMinY;
+    return GameMap::MapPoint(line, x, scale);
 }

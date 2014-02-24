@@ -32,3 +32,7 @@ void Entity::attack()
     m_status = STATUS_ATTACKING;
 
 }
+GameMap* Entity::getGamePos()
+{
+    return m_position;
+}

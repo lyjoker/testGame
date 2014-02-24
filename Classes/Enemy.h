@@ -9,19 +9,18 @@
 #ifndef __TestGame__Enemy__
 #define __TestGame__Enemy__
 
+#include "cocos2d.h"
 #include "Common.h"
 #include "Entity.h"
-#include "cocos2d.h"
-#include "AnimationUtil.h"
+
 
 class Enemy : public Entity
 {
 public:
+    bool init();
     CREATE_FUNC(Enemy);
-    virtual bool init();
     //Enemy* create(const char* pName, int pHP, int pSpeed, int pAttack);
-    void initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack, cocos2d::Point);
-protected:
+    void initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack, GameMap* point);
 };
 
 #endif /* defined(__TestGame__Enemy__) */

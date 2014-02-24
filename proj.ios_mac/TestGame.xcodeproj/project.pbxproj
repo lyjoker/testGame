@@ -62,10 +62,14 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		9121E0AA18BB071B0046296C /* Tower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9121E0A818BB071B0046296C /* Tower.cpp */; };
+		9121E0B318BB33FC0046296C /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9121E0B118BB33FC0046296C /* Bullet.cpp */; };
 		913CFB3B18B58C4C00971134 /* hero_magi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 913CFB3918B58C4C00971134 /* hero_magi.plist */; };
 		913CFB3C18B58C4C00971134 /* hero_magi.png in Resources */ = {isa = PBXBuildFile; fileRef = 913CFB3A18B58C4C00971134 /* hero_magi.png */; };
 		913CFB4518B71C4100971134 /* Enemy_Knight.plist in Resources */ = {isa = PBXBuildFile; fileRef = 913CFB4318B71C4100971134 /* Enemy_Knight.plist */; };
 		913CFB4618B71C4100971134 /* Enemy_Knight.png in Resources */ = {isa = PBXBuildFile; fileRef = 913CFB4418B71C4100971134 /* Enemy_Knight.png */; };
+		913CFB5718BAFD8E00971134 /* MenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 913CFB5518BAFD8E00971134 /* MenuLayer.cpp */; };
+		913CFB5918BAFEDB00971134 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 913CFB5818BAFEDB00971134 /* SystemConfiguration.framework */; };
 		9185AFAC18B4974700352825 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9185AFAA18B4974700352825 /* Enemy.cpp */; };
 		91C1C7AF18B4A8FE00BEDA0F /* AnimationUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C1C7AD18B4A8FE00BEDA0F /* AnimationUtil.cpp */; };
 		91C1C7B818B4B04A00BEDA0F /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C1C7B618B4B04A00BEDA0F /* Entity.cpp */; };
@@ -298,10 +302,17 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
+		9121E0A818BB071B0046296C /* Tower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tower.cpp; path = ../Classes/Tower.cpp; sourceTree = "<group>"; };
+		9121E0A918BB071B0046296C /* Tower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tower.h; path = ../Classes/Tower.h; sourceTree = "<group>"; };
+		9121E0B118BB33FC0046296C /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bullet.cpp; path = ../Classes/Bullet.cpp; sourceTree = "<group>"; };
+		9121E0B218BB33FC0046296C /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bullet.h; path = ../Classes/Bullet.h; sourceTree = "<group>"; };
 		913CFB3918B58C4C00971134 /* hero_magi.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hero_magi.plist; sourceTree = "<group>"; };
 		913CFB3A18B58C4C00971134 /* hero_magi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hero_magi.png; sourceTree = "<group>"; };
 		913CFB4318B71C4100971134 /* Enemy_Knight.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Enemy_Knight.plist; sourceTree = "<group>"; };
 		913CFB4418B71C4100971134 /* Enemy_Knight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Enemy_Knight.png; sourceTree = "<group>"; };
+		913CFB5518BAFD8E00971134 /* MenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MenuLayer.cpp; path = ../../testGame/Classes/MenuLayer.cpp; sourceTree = "<group>"; };
+		913CFB5618BAFD8E00971134 /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuLayer.h; path = ../../testGame/Classes/MenuLayer.h; sourceTree = "<group>"; };
+		913CFB5818BAFEDB00971134 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		9185AFAA18B4974700352825 /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = ../Classes/Enemy.cpp; sourceTree = "<group>"; };
 		9185AFAB18B4974700352825 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = ../Classes/Enemy.h; sourceTree = "<group>"; };
 		91C1C7AD18B4A8FE00BEDA0F /* AnimationUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AnimationUtil.cpp; path = ../Classes/AnimationUtil.cpp; sourceTree = "<group>"; };
@@ -333,6 +344,7 @@
 				1AC6FB30180E99EB004C840B /* libcocos2dx iOS.a in Frameworks */,
 				1AC6FB31180E99EB004C840B /* libcocos2dx-extensions iOS.a in Frameworks */,
 				1AC6FB32180E99EB004C840B /* libCocosDenshion iOS.a in Frameworks */,
+				913CFB5918BAFEDB00971134 /* SystemConfiguration.framework in Frameworks */,
 				D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -390,6 +402,8 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				913CFB5518BAFD8E00971134 /* MenuLayer.cpp */,
+				913CFB5618BAFD8E00971134 /* MenuLayer.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
@@ -403,6 +417,10 @@
 				9185AFAB18B4974700352825 /* Enemy.h */,
 				91C1C7B618B4B04A00BEDA0F /* Entity.cpp */,
 				91C1C7B718B4B04A00BEDA0F /* Entity.h */,
+				9121E0A818BB071B0046296C /* Tower.cpp */,
+				9121E0A918BB071B0046296C /* Tower.h */,
+				9121E0B118BB33FC0046296C /* Bullet.cpp */,
+				9121E0B218BB33FC0046296C /* Bullet.h */,
 				91C1C7AD18B4A8FE00BEDA0F /* AnimationUtil.cpp */,
 				91C1C7AE18B4A8FE00BEDA0F /* AnimationUtil.h */,
 			);
@@ -457,6 +475,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				913CFB5818BAFEDB00971134 /* SystemConfiguration.framework */,
 				D6B0611A1803AB670077942B /* CoreMotion.framework */,
 				503AE11A17EB9C5A00D1A890 /* IOKit.framework */,
 				503AE11117EB99EE00D1A890 /* libcurl.dylib */,
@@ -774,8 +793,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				913CFB5718BAFD8E00971134 /* MenuLayer.cpp in Sources */,
 				9185AFAC18B4974700352825 /* Enemy.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				9121E0AA18BB071B0046296C /* Tower.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -784,6 +805,7 @@
 				91C1C7AF18B4A8FE00BEDA0F /* AnimationUtil.cpp in Sources */,
 				91C1C7B818B4B04A00BEDA0F /* Entity.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
+				9121E0B318BB33FC0046296C /* Bullet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

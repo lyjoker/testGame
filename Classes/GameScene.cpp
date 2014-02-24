@@ -34,10 +34,11 @@ bool GameScene::init()
         initBG();
         nowTime = 0;
         auto testEnemy = Enemy::create();
-        testEnemy->initWithProperty("Enemy_Knight", 1000, 3, 50, new GameMap(1, RIGHT_EDGE_X, scaleNow));
-        testEnemy->run();
+        testEnemy->initWithProperty("Enemy_Knight", 1000, 100, 50, new GameMap(2, RIGHT_EDGE_X, scaleNow));
         this->addChild(testEnemy, 1);
         enemyList->pushBack(testEnemy);
+        auto testTower = Tower::create(100, 100, 100, 20, 400, new GameMap(2, 500, scaleNow), "Tower_Magic");
+        this->addChild(testTower);
         bRet = true;
         this->scheduleUpdate();
     }while (0);

@@ -28,8 +28,17 @@ void Enemy::initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack
     frameCache->addSpriteFramesWithFile(StringUtils::format("%s.plist", name.c_str()), StringUtils::format("%s.png", name.c_str()));
     Sprite* testSprite = Sprite::createWithSpriteFrame(frameCache->getSpriteFrameByName(StringUtils::format("%s_run1.png", name.c_str())));
     this->bindSprite(testSprite);
-    m_Sprite->setPosition(point->getPosition());
+    m_Sprite->setPosition(point->getPosition().x, point->getPosition().y+90);
     m_status = STATUS_RUNNING;
+    schedule(schedule_selector(Enemy::enemyUpdate), 0.1f);
+    Point tmp = m_position->getPosition();
+    tmp.y += 90;
+    tmp.x = 0;
+    m_Sprite->setFlippedX(true);
+    auto moveto = MoveTo::create(2200.0f/m_speed, tmp);
+    
+    this->run();
+    m_Sprite->runAction(moveto);
     /*
     auto enemyListener = EventListenerTouchOneByOne::create();
     enemyListener->onTouchBegan = [=](Touch* touch, Event* event)->bool{
@@ -51,5 +60,10 @@ void Enemy::initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack
     };
     getEventDispatcher()->addEventListenerWithSceneGraphPriority(enemyListener, m_Sprite);
     */
+}
+void Enemy::enemyUpdate(float dt)
+{
+    CCLOG("Now Position: %.0f , %.0f", m_Sprite->getPosition().x, m_Sprite->getPosition().y);
+    
 }
 

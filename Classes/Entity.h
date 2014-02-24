@@ -21,8 +21,10 @@ public:
     void run();
     void attack();
     GameMap *getGamePos();
-protected:
+    float getPositionX();
     cocos2d::Sprite* m_Sprite;
+protected:
+
     int m_curHP, m_maxHP, m_attack, m_speed, m_status;
     std::string name;
     GameMap *m_position;

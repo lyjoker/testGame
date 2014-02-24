@@ -18,7 +18,7 @@ void Entity::bindSprite(Sprite* sprite)
 void Entity::run()
 {
     
-    Animate* animate = Animate::create(AnimationUtil::createAnimWithFrame(StringUtils::format("%s_run", name.c_str()), 1.0f/m_speed, -1));
+    Animate* animate = Animate::create(AnimationUtil::createAnimWithFrame(StringUtils::format("%s_run", name.c_str()), 20.0f/m_speed, -1));
     m_Sprite->stopAllActions();
     m_Sprite->runAction(animate);
     m_status = STATUS_RUNNING;
@@ -35,4 +35,8 @@ void Entity::attack()
 GameMap* Entity::getGamePos()
 {
     return m_position;
+}
+float Entity::getPositionX()
+{
+    return m_Sprite->getPosition().x;
 }

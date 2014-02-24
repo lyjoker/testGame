@@ -25,10 +25,10 @@ GameMap::GameMap(int v_line, float v_x, float v_scale)
 Point GameMap::MapPoint(int line, float position, float nowScale)
 {
     if (line == 1)
-        return Point(LINE1, position*nowScale);
+        return Point(position*nowScale, LINE1);
     if (line == 2)
-        return Point(LINE2, position*nowScale);
-    return Point(LINE1, position*nowScale);
+        return Point(position*nowScale, LINE2);
+    return Point(position*nowScale, LINE1);
 }
 Point GameMap::getPosition()
 {

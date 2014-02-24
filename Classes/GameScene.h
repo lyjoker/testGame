@@ -14,6 +14,7 @@
 #include "Common.h"
 #include "Enemy.h"
 #include "MenuLayer.h"
+#include "Tower.h"
 
 class GameScene : public cocos2d::Layer
 {

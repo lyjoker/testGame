@@ -21,6 +21,7 @@ public:
     CREATE_FUNC(Enemy);
     //Enemy* create(const char* pName, int pHP, int pSpeed, int pAttack);
     void initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack, GameMap* point);
+    void enemyUpdate(float dt);
 };
 
 #endif /* defined(__TestGame__Enemy__) */

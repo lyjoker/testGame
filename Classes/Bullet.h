@@ -23,6 +23,7 @@ public:
 protected:
     bool hasRemoved;
     int damage, speed;
+    cocos2d::Point point;
 
 };
 
@@ -31,9 +32,15 @@ class MagicBullet : public Bullet
 public:
     CREATE_FUNC(MagicBullet);
     bool init();
-    void setProperty(Enemy* enemy, int _damage);
+    void setProperty(Enemy* enemy, int _damage, cocos2d::Point point);
+    void fire();
+    
+    cocos2d::Sprite *sprite;
 private:
     void update(float dt);
+    Enemy* target;
+
+    bool active;
 };
 
 #endif /* defined(__TestGame__Bullet__) */

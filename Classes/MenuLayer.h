@@ -10,7 +10,7 @@
 #define __TestGame__MenuLayer__
 
 #include "cocos2d.h"
-#include "Common.h"
+
 
 
 

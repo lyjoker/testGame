@@ -10,9 +10,8 @@
 #define __TestGame__Bullet__
 
 #include "cocos2d.h"
-#include "Common.h"
-#include "Enemy.h"
-#include "Tower.h"
+
+class Enemy;
 
 class Bullet : public cocos2d::Node
 {
@@ -20,10 +19,19 @@ public:
     CREATE_FUNC(Bullet);
     bool init();
     void removeSelf();
+    static float to360Angle(float angle)
+	{
+		if (angle > 360)
+            angle = (int)angle % 360;
+		if (angle < 0)
+			angle += 360;
+		return angle;
+	}
 protected:
     bool hasRemoved;
     int damage, speed;
     cocos2d::Point point;
+    
 
 };
 
@@ -38,8 +46,9 @@ public:
     cocos2d::Sprite *sprite;
 private:
     void update(float dt);
+    void explosion();
     Enemy* target;
-
+    
     bool active;
 };
 

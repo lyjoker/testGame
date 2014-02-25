@@ -10,16 +10,13 @@
 #define __TestGame__GameMap__
 
 #include "cocos2d.h"
-#include "Common.h"
+
 
 class GameMap
 {
 public:
     static cocos2d::Point MapPoint(int line, float position, float nowScale);
-    GameMap(int v_line, float v_x, float v_scale);
-    int line;
-    float x, scale;
-    cocos2d::Point getPosition();
+    static float lineToY(int line);
 
 };
 

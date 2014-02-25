@@ -7,6 +7,7 @@
 //
 
 #include "MenuLayer.h"
+#include "Common.h"
 
 USING_NS_CC;
 

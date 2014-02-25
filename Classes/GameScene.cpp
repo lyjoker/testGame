@@ -7,6 +7,11 @@
 //
 
 #include "GameScene.h"
+#include "GameMap.h"
+#include "Common.h"
+#include "Enemy.h"
+#include "MenuLayer.h"
+#include "Tower.h"
 
 USING_NS_CC;
 
@@ -16,6 +21,7 @@ float MAP_POS_Y = WIN_HEIGHT / 2;
 
 MenuLayer* GameScene::menulayer = NULL;
 Vector<Enemy*> *GameScene::enemyList = new Vector<Enemy*>;
+Vector<Tower*> *GameScene::towerList = new Vector<Tower*>;
 
 Scene* GameScene::createScene()
 {
@@ -34,11 +40,11 @@ bool GameScene::init()
         initBG();
         nowTime = 0;
         auto testEnemy = Enemy::create();
-        testEnemy->initWithProperty("Enemy_Knight", 1000, 100, 50, new GameMap(2, RIGHT_EDGE_X, scaleNow));
-        this->addChild(testEnemy, 1);
+        testEnemy->initWithProperty("Enemy_Knight", 1000, 120, 50, 2, RIGHT_EDGE_X-400, 0.8f);
+        this->addChild(testEnemy, 2);
         enemyList->pushBack(testEnemy);
-        auto testTower = Tower::create(100, 100, 100, 20, 400, new GameMap(2, 500, scaleNow), "Tower_Magic");
-        this->addChild(testTower);
+        auto testTower = MagicTower::create(2, 1100);
+        this->addChild(testTower, 1);
         bRet = true;
         this->scheduleUpdate();
     }while (0);

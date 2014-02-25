@@ -4,10 +4,88 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>Bullet_PurpleBall.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{184,192},{98,67}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{98,67}}</string>
+                <key>sourceSize</key>
+                <string>{98,67}</string>
+            </dict>
+            <key>Bullet_PurpleBall_Exp.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{184,124},{66,69}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{66,69}}</string>
+                <key>sourceSize</key>
+                <string>{66,69}</string>
+            </dict>
+            <key>Effect_PurpleCircle1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,292},{62,61}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{62,61}}</string>
+                <key>sourceSize</key>
+                <string>{62,61}</string>
+            </dict>
+            <key>Effect_PurpleCircle2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,356},{62,59}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,1},{62,59}}</string>
+                <key>sourceSize</key>
+                <string>{62,61}</string>
+            </dict>
+            <key>Effect_PurpleCircle3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{66,229},{62,61}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{62,61}}</string>
+                <key>sourceSize</key>
+                <string>{62,61}</string>
+            </dict>
+            <key>Effect_PurpleCircle4.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,229},{62,61}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{62,61}}</string>
+                <key>sourceSize</key>
+                <string>{62,61}</string>
+            </dict>
             <key>Tower_Barrack.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{124,246},{120,198}}</string>
+                <string>{{2,2},{120,198}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,67 +98,15 @@
             <key>Tower_Magic.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{124,124},{120,210}}</string>
+                <string>{{2,124},{103,180}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{120,210}}</string>
+                <string>{{0,0},{103,180}}</string>
                 <key>sourceSize</key>
-                <string>{120,210}</string>
-            </dict>
-            <key>Tower_Magic_attack1.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{124,2},{120,250}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{120,250}}</string>
-                <key>sourceSize</key>
-                <string>{120,250}</string>
-            </dict>
-            <key>Tower_Magic_attack2.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,254},{120,250}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{120,250}}</string>
-                <key>sourceSize</key>
-                <string>{120,250}</string>
-            </dict>
-            <key>Tower_Magic_attack3.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{376,2},{120,248}}</string>
-                <key>offset</key>
-                <string>{0,-1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,2},{120,248}}</string>
-                <key>sourceSize</key>
-                <string>{120,250}</string>
-            </dict>
-            <key>Tower_Magic_attack4.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,2},{120,250}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{120,250}}</string>
-                <key>sourceSize</key>
-                <string>{120,250}</string>
+                <string>{103,180}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -90,9 +116,9 @@
             <key>realTextureFileName</key>
             <string>Tower.png</string>
             <key>size</key>
-            <string>{512,512}</string>
+            <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:5c96a513e5b9cd61a0e764d0e5141365:630b34dfaccde34a8ecac98a437a4707:b43693b1cbc56c0101d4756a7d79f5dc$</string>
+            <string>$TexturePacker:SmartUpdate:5df496490bb214b496c3aa2c4ff4a89f:9bc0c6441e978a9e3c7cbd41153dd885:b43693b1cbc56c0101d4756a7d79f5dc$</string>
             <key>textureFileName</key>
             <string>Tower.png</string>
         </dict>

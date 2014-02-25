@@ -7,21 +7,13 @@
 //
 
 #include "GameMap.h"
-
+#include "Common.h"
 
 USING_NS_CC;
 
 
-const float FLOOR_POS_Y = 110;
-const float CELL_POS_Y = 220;
 
 
-GameMap::GameMap(int v_line, float v_x, float v_scale)
-{
-    line = v_line;
-    x = v_x;
-    scale = v_scale;
-}
 Point GameMap::MapPoint(int line, float position, float nowScale)
 {
     if (line == 1)
@@ -30,7 +22,13 @@ Point GameMap::MapPoint(int line, float position, float nowScale)
         return Point(position*nowScale, LINE2);
     return Point(position*nowScale, LINE1);
 }
-Point GameMap::getPosition()
+float GameMap::lineToY(int line)
 {
-    return GameMap::MapPoint(line, x, scale);
+    if (line == 1)
+        return LINE1;
+    else if (line == 2)
+        return LINE2;
+    else if (line == 3)
+        return LINE3;
+    return LINE2;
 }

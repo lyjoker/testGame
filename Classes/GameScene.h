@@ -10,11 +10,10 @@
 #define __TestGame__GameScene__
 
 #include "cocos2d.h"
-#include "GameMap.h"
-#include "Common.h"
-#include "Enemy.h"
-#include "MenuLayer.h"
-#include "Tower.h"
+
+class Enemy;
+class MenuLayer;
+class Tower;
 
 class GameScene : public cocos2d::Layer
 {
@@ -22,6 +21,7 @@ public:
     static cocos2d::Scene* createScene();
     static MenuLayer* menulayer;
     static cocos2d::Vector<Enemy*> *enemyList;
+    static cocos2d::Vector<Tower*> *towerList;
     bool init();
     void setTimeDisplay(cocos2d::LabelTTF *);
     CREATE_FUNC(GameScene);

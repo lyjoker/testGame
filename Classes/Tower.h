@@ -21,6 +21,7 @@ protected:
     int t_curHP, t_maxHP, t_attack,  t_attRange, t_status, t_line;
     float t_attSpeed;
     cocos2d::Point t_position;
+    cocos2d::ProgressTimer *t_healthbar;
     virtual void towerUpdate(float dt);
     virtual void animateAttack(){};
     virtual void attackEnemy(Enemy* enemy){};
@@ -42,6 +43,14 @@ public:
         }
     }
     bool init(int, int,int, float,int, float,int, std::string);
+    void setDamage(int damage);
+    cocos2d::Rect getEffectRect();
+    cocos2d::Point getMidPoint();
+    void removeSelf();
+    static void stopAllActionsFromAllChild(Node *);
+    bool hasRemoved;
+    int getLine(){return t_line;}
+    int getHP(){return t_curHP;}
 
 };
 

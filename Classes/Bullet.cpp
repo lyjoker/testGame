@@ -25,7 +25,7 @@ void Bullet::removeSelf()
 		return;
     
 	hasRemoved = true;
-	unscheduleAllSelectors();
+	this->unscheduleAllSelectors();
 	this->stopAllActions();
 	this->removeFromParentAndCleanup(true);
 }
@@ -69,8 +69,8 @@ void MagicBullet::explosion()
     auto frameCache = SpriteFrameCache::getInstance();
     SpriteFrame* tmp = frameCache->getSpriteFrameByName("Bullet_PurpleBall_Exp.png");
     sprite = Sprite::createWithSpriteFrame(tmp);
+    CCLOG("point: %f, %f", point.x, point.y);
     sprite->setPosition(point);
-    sprite->runAction(Sequence::create(FadeOut::create(0.5f), CallFunc::create(CC_CALLBACK_0(Bullet::removeSelf, this)), NULL));
 
 }
 void MagicBullet::update(float dt)
@@ -85,7 +85,8 @@ void MagicBullet::update(float dt)
         if (sprite->getBoundingBox().intersectsRect(target->getEffectRect()))
         {
             target->setDamage(damage);
-            explosion();
+            //explosion();
+            removeSelf();
             return;
         }
         float dx = target->getMidPoint().x - point.x;

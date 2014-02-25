@@ -19,9 +19,10 @@ public:
     void animateRun();
     void animateAttack();
     int getLine();
+    int getHP();
     bool hasRemoved;
 protected:
-    int m_curHP, m_maxHP, m_attack, m_speed, m_status, m_line;
+    int m_curHP, m_maxHP, m_attack, m_speed, m_status, m_line, m_attRange;
     float m_attSpeed;
     std::string name;
     cocos2d::Point m_position;

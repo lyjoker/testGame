@@ -11,6 +11,7 @@
 #include "Creature.h"
 #include "GameMap.h"
 #include "GameScene.h"
+#include "Tower.h"
 
 USING_NS_CC;
 
@@ -20,7 +21,7 @@ bool Enemy::init()
     hasRemoved = false;
     return true;
 }
-void Enemy::initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack, int pLine, float pX, float attSpeed)
+bool Enemy::initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack, int pLine, float pX, float attSpeed, int attRange)
 {
     name = pName;
     m_curHP = m_maxHP = pHP;
@@ -29,6 +30,7 @@ void Enemy::initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack
     m_position = Point(pX, GameMap::lineToY(pLine));
     m_line = pLine;
     m_attSpeed = attSpeed;
+    m_attRange = attRange;
     auto frameCache = SpriteFrameCache::getInstance();
     frameCache->addSpriteFramesWithFile(
                                         StringUtils::format("%s.plist", name.c_str()),
@@ -62,12 +64,15 @@ void Enemy::initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack
     
     schedule(schedule_selector(Enemy::enemyUpdate), 0.1f);
     Point tmp = m_position;
+    float dist = tmp.x;
     tmp.x = 0;
+    auto moveto = MoveTo::create(dist/m_speed, tmp);
     
-    auto moveto = MoveTo::create(2200.0f/m_speed, tmp);
     
     this->animateRun();
     this->runAction(moveto);
+    
+    GameScene::enemyList->pushBack(this);
     /*
     auto enemyListener = EventListenerTouchOneByOne::create();
     enemyListener->onTouchBegan = [=](Touch* touch, Event* event)->bool{
@@ -89,6 +94,7 @@ void Enemy::initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack
     };
     getEventDispatcher()->addEventListenerWithSceneGraphPriority(enemyListener, m_Sprite);
     */
+    return true;
 }
 
 Rect Enemy::getEffectRect()
@@ -144,10 +150,69 @@ void Enemy::enemyUpdate(float dt)
 {
     if (m_status == STATUS_COOLDOWN)
         return;
-    if (m_status == STATUS_RUNNING)
+    Tower* attTower = NULL;
+    for( Tower* tower : *GameScene::towerList)
     {
-    
+        if (tower==NULL || tower->hasRemoved) continue;
+        if (tower->getLine() != m_line || tower->getHP()<=0)
+            continue;
+        if (this->getEffectRect().intersectsRect(tower->getEffectRect()))
+        {
+            attTower = tower;
+            break;
+        }
     }
+    if (attTower==NULL && m_status==STATUS_ATTACKING)
+    {
+        m_status = STATUS_RUNNING;
+        this->stopAttackAndRun();
+        return;
+    }
+    if (attTower!=NULL)
+    {
+        this->stopAllActions();
+        this->animateAttack();
+        this->attackTower(attTower);
+        m_status = STATUS_COOLDOWN;
+        this->runAction(Sequence::create(
+                                         DelayTime::create(0.5f/m_attSpeed),
+                                         CallFunc::create([&](){
+                                                                m_status = STATUS_ATTACKING;
+                                                                }),
+                                         NULL
+                                         ));
+        
+    }
+
     
+}
+void Enemy::stopAttackAndRun()
+{
+    Point tmp = this->getPosition();
+    float dist = tmp.x;
+    tmp.x = 0;
+    auto moveto = MoveTo::create(dist/m_speed, tmp);
+    
+    this->animateRun();
+    this->runAction(moveto);
+}
+void Enemy::attackTower(Tower *tower)
+{
+    tower->setDamage(m_attack);
+}
+
+EnemyKnight* EnemyKnight::create(int pLine, float pX)
+{
+    EnemyKnight *pRet = new EnemyKnight();
+    if (pRet && pRet->initWithProperty("Enemy_Knight", 1000, 60, 40, pLine, pX, 1.0f, 0))
+    {
+        pRet->autorelease();
+        return pRet;
+    }else
+    {
+        delete pRet;
+        pRet = NULL;
+        return NULL;
+    }
 }
 

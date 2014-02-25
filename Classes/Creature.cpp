@@ -24,13 +24,16 @@ void Creature::animateRun()
 void Creature::animateAttack()
 {
 
-    Animate* animate = Animate::create(AnimationUtil::createAnimWithFrame(StringUtils::format("%s_attack", name.c_str()), 0.07f, 1));
+    Animate* animate = Animate::create(AnimationUtil::createAnimWithFrame(StringUtils::format("%s_attack", name.c_str()), 0.125f/m_attSpeed, 1));
     m_sprite->stopAllActions();
-    m_sprite->runAction(RepeatForever::create(Sequence::create(animate,DelayTime::create(1.0f/m_attSpeed), NULL)));
-    m_status = STATUS_ATTACKING;
+    m_sprite->runAction(animate);
 
 }
 int Creature::getLine()
 {
     return m_line;
+}
+int Creature::getHP()
+{
+    return m_curHP;
 }

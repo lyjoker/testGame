@@ -39,12 +39,17 @@ bool GameScene::init()
     do{
         initBG();
         nowTime = 0;
-        auto testEnemy = Enemy::create();
-        testEnemy->initWithProperty("Enemy_Knight", 1000, 120, 50, 2, RIGHT_EDGE_X-400, 0.8f);
-        this->addChild(testEnemy, 2);
-        enemyList->pushBack(testEnemy);
+        for (int i=0; i<=5; i++)
+        {
+            auto testEnemy = EnemyKnight::create(2, RIGHT_EDGE_X- i*100);
+            this->addChild(testEnemy, 2);
+        }
         auto testTower = MagicTower::create(2, 1100);
         this->addChild(testTower, 1);
+        auto testEnemy2 = EnemyKnight::create(2, RIGHT_EDGE_X-700);
+        
+        this->addChild(testEnemy2, 2);
+         
         bRet = true;
         this->scheduleUpdate();
     }while (0);

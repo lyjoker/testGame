@@ -16,7 +16,7 @@
 class Creature : public cocos2d::Node
 {
 public:
-    void animateRun();
+    void animateRun(float);
     void animateAttack();
     int getLine();
     int getHP();

@@ -28,10 +28,6 @@ bool Tower::init(int curHP, int maxHP, int attack, float attSpeed, int attRange,
     t_attRange = attRange;
     name = v_name;
     auto frameCache = SpriteFrameCache::getInstance();
-    frameCache->addSpriteFramesWithFile(
-                                        StringUtils::format("Tower.plist"),
-                                        StringUtils::format("Tower.png")
-                                        );
     
     t_sprite = Sprite::createWithSpriteFrame(
                                              frameCache->getSpriteFrameByName(
@@ -90,8 +86,13 @@ void Tower::setDamage(int damage)
     if (t_curHP <= 0)
     {
         Tower::stopAllActionsFromAllChild(this);
-        auto dead1 = Blink::create(0.3f, 3);
-        this->runAction(Sequence::create(
+        auto dead1 = FadeOut::create(0.5f);
+        auto dead2 = Animate::create(AnimationUtil::createAnimWithFrame("Effect_TowerExplosion", 0.1f, 1));
+        auto tmp_sprite = Sprite::create();
+        tmp_sprite->setPosition(this->getMidPoint()-this->getPosition());
+        this->addChild(tmp_sprite);
+        tmp_sprite->runAction(dead2);
+        t_sprite->runAction(Sequence::create(
                                          dead1,
                                          CallFunc::create(
                                                           [&](){removeSelf();}
@@ -189,7 +190,7 @@ void MagicTower::attackEnemy(Enemy *enemy)
     Point tmp = t_position;
     tmp.y += t_sprite->getContentSize().height;
     tmp.x += t_sprite->getContentSize().width / 2;
-    bullet->setProperty(enemy, t_attack,  tmp);
+    bullet->setProperty(enemy, t_attack,  tmp, "Bullet_PurpleBall", true);
     bullet->fire();
     this->getParent()->addChild(bullet, 3);
 }

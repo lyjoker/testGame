@@ -12,17 +12,14 @@
 #include "GameMap.h"
 #include "GameScene.h"
 #include "Tower.h"
+#include "Bullet.h"
 
 USING_NS_CC;
 
-bool Enemy::init()
-{
-    m_status = STATUS_RUNNING;
-    hasRemoved = false;
-    return true;
-}
+
 bool Enemy::initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack, int pLine, float pX, float attSpeed, int attRange)
 {
+    hasRemoved = false;
     name = pName;
     m_curHP = m_maxHP = pHP;
     m_speed = pSpeed;
@@ -32,10 +29,6 @@ bool Enemy::initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack
     m_attSpeed = attSpeed;
     m_attRange = attRange;
     auto frameCache = SpriteFrameCache::getInstance();
-    frameCache->addSpriteFramesWithFile(
-                                        StringUtils::format("%s.plist", name.c_str()),
-                                        StringUtils::format("%s.png", name.c_str())
-                                        );
     m_sprite = Sprite::createWithSpriteFrame(
                                              frameCache->getSpriteFrameByName(
                                                                              StringUtils::format("%s_run1.png", name.c_str())
@@ -63,7 +56,7 @@ bool Enemy::initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack
     this->addChild(redbar, 1);
     
     schedule(schedule_selector(Enemy::enemyUpdate), 0.1f);
-    Point tmp = m_position;
+    /*Point tmp = m_position;
     float dist = tmp.x;
     tmp.x = 0;
     auto moveto = MoveTo::create(dist/m_speed, tmp);
@@ -71,7 +64,7 @@ bool Enemy::initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack
     
     this->animateRun();
     this->runAction(moveto);
-    
+    */
     GameScene::enemyList->pushBack(this);
     /*
     auto enemyListener = EventListenerTouchOneByOne::create();
@@ -96,16 +89,25 @@ bool Enemy::initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack
     */
     return true;
 }
-
+bool Enemy::setDefaultProperty()
+{
+    pxWidthRate = 0.15f;
+    pxHeightRate = 0.15f;
+    widthRate = 0.7f;
+    heightRate = 0.7f;
+    runInternalTime = 20.0f/m_speed;
+    this->stopActionAndRun();
+    return true;
+}
 Rect Enemy::getEffectRect()
 {
     float _width = m_sprite->getContentSize().width;
     float _height = m_sprite->getContentSize().height;
     auto rect = Rect(
-                     this->getPositionX() + _width * 0.15,
-                     this->getPositionY() + _height * 0.15,
-                     _width * 0.7,
-                     _height * 0.7
+                     this->getPositionX() + _width * pxWidthRate,
+                     this->getPositionY() + _height * pxHeightRate,
+                     _width * widthRate,
+                     _height * heightRate
                      );
     return rect;
 }
@@ -156,7 +158,8 @@ void Enemy::enemyUpdate(float dt)
         if (tower==NULL || tower->hasRemoved) continue;
         if (tower->getLine() != m_line || tower->getHP()<=0)
             continue;
-        if (this->getEffectRect().intersectsRect(tower->getEffectRect()))
+        if ((m_attRange==0 && this->getEffectRect().intersectsRect(tower->getEffectRect()))
+            || (m_attRange>0 && this->getPosition().getDistance(tower->getMidPoint())<=m_attRange))
         {
             attTower = tower;
             break;
@@ -165,7 +168,7 @@ void Enemy::enemyUpdate(float dt)
     if (attTower==NULL && m_status==STATUS_ATTACKING)
     {
         m_status = STATUS_RUNNING;
-        this->stopAttackAndRun();
+        this->stopActionAndRun();
         return;
     }
     if (attTower!=NULL)
@@ -186,14 +189,14 @@ void Enemy::enemyUpdate(float dt)
 
     
 }
-void Enemy::stopAttackAndRun()
+void Enemy::stopActionAndRun()
 {
     Point tmp = this->getPosition();
     float dist = tmp.x;
     tmp.x = 0;
     auto moveto = MoveTo::create(dist/m_speed, tmp);
     
-    this->animateRun();
+    this->animateRun(runInternalTime);
     this->runAction(moveto);
 }
 void Enemy::attackTower(Tower *tower)
@@ -204,7 +207,21 @@ void Enemy::attackTower(Tower *tower)
 EnemyKnight* EnemyKnight::create(int pLine, float pX)
 {
     EnemyKnight *pRet = new EnemyKnight();
-    if (pRet && pRet->initWithProperty("Enemy_Knight", 1000, 60, 40, pLine, pX, 1.0f, 0))
+    if (pRet && pRet->initWithProperty("Enemy_Knight", 1000, 60, 40, pLine, pX, 1.0f, 0) && pRet->setDefaultProperty())
+    {
+        pRet->autorelease();
+        return pRet;
+    }else
+    {
+        delete pRet;
+        pRet = NULL;
+        return NULL;
+    }
+}
+EnemyBlueDragon* EnemyBlueDragon::create(int pLine, float pX)
+{
+    EnemyBlueDragon *pRet = new EnemyBlueDragon();
+    if (pRet && pRet->initWithProperty("Enemy_BlueDragon", 500, 100, 60, pLine, pX, 0.7f, 350) && pRet->setDefaultProperty())
     {
         pRet->autorelease();
         return pRet;
@@ -216,3 +233,29 @@ EnemyKnight* EnemyKnight::create(int pLine, float pX)
     }
 }
 
+bool EnemyBlueDragon::setDefaultProperty()
+{
+    pxWidthRate = 0.3f;
+    pxHeightRate = 0.35f;
+    widthRate = 0.4f;
+    heightRate = 0.35f;
+    this->setPosition(this->getPosition()+Point(0, 300+rand()%100-50));
+    runInternalTime = 6.0f/m_speed;
+    this->stopActionAndRun();
+    //schedule(schedule_selector(EnemyBlueDragon::enemyUpdate), 0.1f);
+    return true;
+}
+void EnemyBlueDragon::attackTower(Tower* tower)
+{
+    /*MagicBullet *bullet = MagicBullet::create();
+    Point tmp = this->getPosition();
+    tmp.y += m_sprite->getContentSize().height;
+    bullet->setProperty(tower, m_attack,  tmp, "Bullet_PurpleBall", true);
+    bullet->fire();
+    this->getParent()->addChild(bullet, 3);*/
+    this->animateRun(runInternalTime);
+}
+void EnemyBlueDragon::enemyUpdate(float dt)
+{
+    CCLOG("BlueDragon Update!");
+}

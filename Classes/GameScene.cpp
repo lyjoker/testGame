@@ -37,12 +37,16 @@ bool GameScene::init()
 {
     bool bRet = false;
     do{
+        srand((unsigned int) time(NULL));
         initBG();
+        initFrameCache();
         nowTime = 0;
         for (int i=0; i<=5; i++)
         {
             auto testEnemy = EnemyKnight::create(2, RIGHT_EDGE_X- i*100);
             this->addChild(testEnemy, 2);
+            auto testEnemy2 = EnemyBlueDragon::create(2, RIGHT_EDGE_X - i*90);
+            this->addChild(testEnemy2, 2);
         }
         auto testTower = MagicTower::create(2, 1100);
         this->addChild(testTower, 1);
@@ -55,7 +59,12 @@ bool GameScene::init()
     }while (0);
     return bRet;
 }
-
+void GameScene::initFrameCache()
+{
+    auto frameCache = SpriteFrameCache::getInstance();
+    frameCache->addSpriteFramesWithFile("Tower.plist", "Tower.png");
+    frameCache->addSpriteFramesWithFile("Enemy.plist", "Enemy.png");
+}
 void GameScene::initBG()
 {
 

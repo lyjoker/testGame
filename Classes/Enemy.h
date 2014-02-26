@@ -17,19 +17,20 @@ class Tower;
 class Enemy : public Creature
 {
 public:
-    bool init();
-    CREATE_FUNC(Enemy);
     //Enemy* create(const char* pName, int pHP, int pSpeed, int pAttack);
     bool initWithProperty(const char* pName, int pHP, int pSpeed, int pAttack, int pLine, float pX, float attSpeed, int attRange);
-    void enemyUpdate(float dt);
+    virtual void enemyUpdate(float dt);
     cocos2d::Rect getEffectRect();
     cocos2d::Point getMidPoint();
     void removeSelf();
     void setDamage(int damage);
     cocos2d::Animate* animateDead();
+    virtual bool setDefaultProperty();
 protected:
-    void stopAttackAndRun();
-    void attackTower(Tower* tower);
+    void stopActionAndRun();
+    virtual void attackTower(Tower* tower);
+    float pxWidthRate, pxHeightRate, widthRate, heightRate;
+    float runInternalTime;
 
 };
 
@@ -37,5 +38,14 @@ class EnemyKnight : public Enemy
 {
 public:
     static EnemyKnight* create(int pLine, float pX);
+};
+
+class EnemyBlueDragon : public Enemy
+{
+public:
+    static EnemyBlueDragon* create(int pLine, float pX);
+    bool setDefaultProperty();
+    void attackTower(Tower* tower);
+    void enemyUpdate(float dt);
 };
 #endif /* defined(__TestGame__Enemy__) */

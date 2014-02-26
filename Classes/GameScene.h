@@ -37,7 +37,7 @@ private:
     cocos2d::Point nowTouchPoint;
     void updateEdges();
     float maxWidth, minWidth, maxHeight, minHeight;
-
+    void initFrameCache();
 
 };
 

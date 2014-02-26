@@ -38,23 +38,25 @@ bool MagicBullet::init()
     scheduleUpdate();
     return true;
 }
-void MagicBullet::setProperty(Enemy* enemy, int _damage, Point _point)
+void MagicBullet::setProperty(Enemy* enemy, int _damage, Point _point, const char* _name, bool _isExplosion)
 {
     target = enemy;
     damage = _damage;
     point = _point;
+    name = _name;
+    isExplosion = _isExplosion;
 }
 void MagicBullet::fire()
 {
     auto frameCache = SpriteFrameCache::getInstance();
-    SpriteFrame* tmp = frameCache->getSpriteFrameByName("Bullet_PurpleBall.png");
+    SpriteFrame* tmp = frameCache->getSpriteFrameByName(StringUtils::format("%s.png", name.c_str()));
     sprite = Sprite::createWithSpriteFrame(tmp);
     sprite->setScale(0.6f);
     sprite->setPosition(point.x, point.y);
     float dx = target->getMidPoint().x - point.x;
     float dy = target->getMidPoint().y - point.y;
     float tanangle = dy / dx;
-    float angle = atanf(tanangle);
+    angle = atanf(tanangle);
     angle = to360Angle(CC_RADIANS_TO_DEGREES(angle));
     if (dx<0 && dy>0)
         angle -= 180;
@@ -67,11 +69,19 @@ void MagicBullet::fire()
 void MagicBullet::explosion()
 {
     auto frameCache = SpriteFrameCache::getInstance();
-    SpriteFrame* tmp = frameCache->getSpriteFrameByName("Bullet_PurpleBall_Exp.png");
+    SpriteFrame* tmp = frameCache->getSpriteFrameByName(StringUtils::format("%s_Exp.png", name.c_str()));
+    sprite->removeFromParentAndCleanup(true);
     sprite = Sprite::createWithSpriteFrame(tmp);
+    sprite->setPosition(point + Point(
+                                      sprite->getContentSize().width * cosf(CC_DEGREES_TO_RADIANS(angle)) / 2,
+                                      sprite->getContentSize().height * sinf(CC_DEGREES_TO_RADIANS(angle)) / 2));
+    this->addChild(sprite);
+    sprite->runAction(Sequence::create(FadeOut::create(0.3f),
+                                       CallFunc::create(CC_CALLBACK_0(Bullet::removeSelf, this)),
+                                       NULL));
     CCLOG("point: %f, %f", point.x, point.y);
-    sprite->setPosition(point);
-
+    active = false;
+    
 }
 void MagicBullet::update(float dt)
 {
@@ -85,14 +95,16 @@ void MagicBullet::update(float dt)
         if (sprite->getBoundingBox().intersectsRect(target->getEffectRect()))
         {
             target->setDamage(damage);
-            //explosion();
-            removeSelf();
+            if (isExplosion)
+                explosion();
+            else
+                removeSelf();
             return;
         }
         float dx = target->getMidPoint().x - point.x;
         float dy = target->getMidPoint().y - point.y;
         float tanangle = dy / dx;
-        float angle = atanf(tanangle);
+        angle = atanf(tanangle);
         angle = to360Angle(CC_RADIANS_TO_DEGREES(angle));
         if (dx<0 && dy>0)
             angle -= 180;
